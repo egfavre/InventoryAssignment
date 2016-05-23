@@ -17,36 +17,40 @@ public class Main {
         inventory.add(item);
 
         while(true) {
-            System.out.println("Current Inventory:");
-            int i = 1;
-            for (NameQuantity temp : inventory) {
-                System.out.println(i + temp.itemName + " " + temp.quantity);
-                i++;
-            }
+                System.out.println("Current Inventory:");
+                int i = 1;
+                for (NameQuantity temp : inventory) {
+                    System.out.println(i + temp.itemName + " " + temp.quantity);
+                    i++;
+                }
 
-            {
-                System.out.println("");
-                System.out.println("Menu:");
-                System.out.println("1. Create New Item");
-                System.out.println("2. Remove Existing Item");
-                System.out.println("3. Update Quantity of Existing Item");
-            }
+                {
+                    System.out.println("");
+                    System.out.println("Menu:");
+                    System.out.println("1. Create New Item");
+                    System.out.println("2. Remove Existing Item");
+                    System.out.println("3. Update Quantity of Existing Item");
+                }
+
             Integer choice = scanner.nextInt();
 
             switch (choice) {
-                case 1: createItem(scanner, inventory);
+                case 1:
+                    createItem(scanner, inventory);
                     break;
-                case 2: removeItem(scanner, inventory);
+                case 2:
+                    removeItem(scanner, inventory);
                     break;
-                case 3:update(scanner, inventory);
+                case 3:
+                    update(scanner, inventory);
                     break;
                 default:
                     System.out.println("Invalid Option");
             }
         }
-            //create new Item
-
     }
+
+    //create new Item
     public static void createItem(Scanner scanner, ArrayList<NameQuantity> inventory) {
         System.out.println("What is the name of the new item?");
         Scanner newScanner = new Scanner(System.in);
