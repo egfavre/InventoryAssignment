@@ -17,20 +17,20 @@ public class Main {
         inventory.add(item);
 
         while(true) {
+            System.out.println("Current Inventory:");
             int i = 1;
             for (NameQuantity temp : inventory) {
-                System.out.println("Current Inventory:");
-                System.out.println("");
                 System.out.println(i + temp.itemName + " " + temp.quantity);
-                System.out.println("");
                 i++;
             }
 
-            System.out.println("Menu:");
-            System.out.println("1. Create New Item");
-            System.out.println("2. Remove Existing Item");
-            System.out.println("3. Update Quantity of Existing Item");
-
+            {
+                System.out.println("");
+                System.out.println("Menu:");
+                System.out.println("1. Create New Item");
+                System.out.println("2. Remove Existing Item");
+                System.out.println("3. Update Quantity of Existing Item");
+            }
             Integer choice = scanner.nextInt();
 
             switch (choice) {
@@ -48,11 +48,12 @@ public class Main {
 
     }
     public static void createItem(Scanner scanner, ArrayList<NameQuantity> inventory) {
-        System.out.println("Enter your to do item:");
-        String text = scanner.nextLine();
+        System.out.println("What is the name of the new item?");
+        Scanner newScanner = new Scanner(System.in);
+        String tempName = newScanner.nextLine();
         System.out.println("What is the quantity?");
         Integer qty = scanner.nextInt();
-        NameQuantity item = new NameQuantity(text, qty);
+        NameQuantity item = new NameQuantity(tempName, qty);
         inventory.add(item);
     }
 
@@ -71,9 +72,8 @@ public class Main {
         Integer newQty = scanner.nextInt();
         NameQuantity temp = inventory.get(itemNum - 1);
         String tempName = temp.getItemName();
-        Integer tempQty = temp.getQuantity();
         inventory.remove(itemNum - 1);
-        NameQuantity temp2 = new NameQuantity(tempName, tempQty);
+        NameQuantity temp2 = new NameQuantity(tempName, newQty);
         inventory.add(temp2);
     }
  }
