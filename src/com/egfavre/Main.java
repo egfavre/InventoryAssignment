@@ -14,7 +14,7 @@ public class Main {
         ArrayList<NameQuantity> inventory = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
-        NameQuantity item = new NameQuantity("Jerseys", 12);
+        NameQuantity item = new NameQuantity("Jerseys", 12, "Jersey");
         inventory.add(item);
 
         while(true) {
@@ -73,32 +73,30 @@ public class Main {
     }
 
     //factory method
-    public static Integer createItem (Scanner scanner, ArrayList<NameQuantity> inventory) {
-        NameQuantity newObject = factoryItem();
+    public static void createItem (Scanner scanner, ArrayList<NameQuantity> inventory) {
         System.out.println("What is the name of the new item?");
         Scanner newScanner = new Scanner(System.in);
         String newItemName = newScanner.nextLine();
         System.out.println("What is the quantity?");
         Integer newQuantity = scanner.nextInt();
+        NameQuantity newObject = factoryItem(newItemName, newQuantity);
         inventory.add(newObject);
-        newObject.itemName = newItemName;
-        newObject.quantity = newQuantity;
     }
-    public static NameQuantity factoryItem(){
+    public static NameQuantity factoryItem(String newItemName, Integer newQuantity){
         System.out.printf("What category is the new item? \n 1. Jersey\n 2. Shoe\n 3. Ball\n 4. ShinGuard\n 5. WaterBottle\n");
         Scanner scanner = new Scanner(System.in);
         Integer categoryChoice = scanner.nextInt();
         switch (categoryChoice) {
                 case 1:
-                    return new Jersey();
+                    return new Jersey(newItemName, newQuantity);
                 case 2:
-                    return new Shoe();
+                    return new Shoe(newItemName, newQuantity);
                 case 3:
-                    return new Ball();
+                    return new Ball(newItemName, newQuantity);
                 case 4:
-                    return new ShinGuard();
+                    return new ShinGuard(newItemName, newQuantity);
                 case 5:
-                    return new WaterBottle();
+                    return new WaterBottle(newItemName, newQuantity);
             }
             return null;
     }

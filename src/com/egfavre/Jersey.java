@@ -5,7 +5,7 @@ package com.egfavre;
  */
 public class Jersey extends NameQuantity {
 
-    public Jersey(){
+    public Jersey(String item, Integer quantity){
         this.itemName = itemName;
         this.quantity = quantity;
         this.category = "Jersey";
