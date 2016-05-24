@@ -6,10 +6,17 @@ package com.egfavre;
 public class NameQuantity {
     String itemName;
     Integer quantity;
+    String category;
 
-    public NameQuantity(String itemName, Integer quantity) {
+
+
+    public NameQuantity(String itemName, Integer quantity, String category) {
         this.itemName = itemName;
         this.quantity = quantity;
+        this.category = category;
+    }
+
+    public NameQuantity() {
     }
 
     public String getItemName() {
