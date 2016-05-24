@@ -19,9 +19,10 @@ public class Main {
 
         while(true) {
                 System.out.println("Current Inventory:");
+                System.out.printf("Item  Name       Qty   Cat     \n");
                 int i = 1;
                 for (NameQuantity temp : inventory) {
-                    System.out.printf("%s %s %s\n", i, temp.itemName, temp.quantity);
+                    System.out.printf("%s     %s    %s    %s\n", i, temp.itemName, temp.quantity, temp.category);
                     i++;
                 }
 
