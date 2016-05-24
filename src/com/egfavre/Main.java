@@ -2,6 +2,7 @@ package com.egfavre;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.jar.Attributes;
 
 public class Main {
 
@@ -51,25 +52,7 @@ public class Main {
     }
 
     //create new Item
-    public static void addItem(Scanner scanner, ArrayList<NameQuantity> inventory) {
-        System.out.println("What is the name of the new item?");
-        Scanner newScanner = new Scanner(System.in);
-        String itemName = newScanner.nextLine();
-        System.out.println("What is the quantity?");
-        Integer qty = scanner.nextInt();
-        System.out.printf("What category is the new item? \n 1. Jersey\n 2. Shoe\n 3. Ball\n 4. ShinGuard\n 5. WaterBottle\n");
-        int categoryChoice = scanner.nextInt();
 
-
-
-        System.out.println("What is the name of the new item?");
-        Scanner newScanner = new Scanner(System.in);
-        String tempName = newScanner.nextLine();
-        System.out.println("What is the quantity?");
-        Integer qty = scanner.nextInt();
-        NameQuantity item = new NameQuantity(tempName, qty);
-        inventory.add(item);
-    }
 
     //remove an item
     public static void removeItem(Scanner scanner, ArrayList<NameQuantity> inventory) {
@@ -90,18 +73,32 @@ public class Main {
     }
 
     //factory method
-    public static NameQuantity createItem (int categoryChoice, String itemName, Integer quantity, String category){
-            switch (categoryChoice) {
+    public static Integer createItem (Scanner scanner, ArrayList<NameQuantity> inventory) {
+        NameQuantity newObject = factoryItem();
+        System.out.println("What is the name of the new item?");
+        Scanner newScanner = new Scanner(System.in);
+        String newItemName = newScanner.nextLine();
+        System.out.println("What is the quantity?");
+        Integer newQuantity = scanner.nextInt();
+        inventory.add(newObject);
+        newObject.itemName = newItemName;
+        newObject.quantity = newQuantity;
+    }
+    public static NameQuantity factoryItem(){
+        System.out.printf("What category is the new item? \n 1. Jersey\n 2. Shoe\n 3. Ball\n 4. ShinGuard\n 5. WaterBottle\n");
+        Scanner scanner = new Scanner(System.in);
+        Integer categoryChoice = scanner.nextInt();
+        switch (categoryChoice) {
                 case 1:
-                    return new Jersey(itemName, quantity, category);
+                    return new Jersey();
                 case 2:
-                    return new Shoe(itemName, quantity, category);
+                    return new Shoe();
                 case 3:
-                    return new Ball(itemName, quantity, category);
+                    return new Ball();
                 case 4:
-                    return new ShinGuard(itemName, quantity, category);
+                    return new ShinGuard();
                 case 5:
-                    return new WaterBottle(itemName, quantity, category);
+                    return new WaterBottle();
             }
             return null;
     }
